@@ -237,6 +237,12 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     [super viewDidLayoutSubviews];
 }
 
+- (void)viewSafeAreaInsetsDidChange
+{
+    [super viewSafeAreaInsetsDidChange];
+
+    [self slk_updateViewConstraints];
+}
 
 #pragma mark - Getters
 
@@ -426,6 +432,10 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         }
     }
     
+    if (@available(iOS 11.0, *)) {
+        return self.view.safeAreaInsets.bottom;
+    }
+
     return 0.0;
 }
 
