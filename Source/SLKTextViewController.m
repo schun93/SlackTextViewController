@@ -237,7 +237,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     [super viewDidLayoutSubviews];
 }
 
-- (void)viewSafeAreaInsetsDidChange
+- (void)viewSafeAreaInsetsDidChange API_AVAILABLE(ios(11.0))
 {
     [super viewSafeAreaInsetsDidChange];
 
@@ -432,9 +432,12 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         }
     }
     
-    if (@available(iOS 11.0, *)) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability-new"
+    if ([self.view respondsToSelector:@selector(safeAreaInsets)]) {
         return self.view.safeAreaInsets.bottom;
     }
+#pragma clang diagnostic pop
 
     return 0.0;
 }
