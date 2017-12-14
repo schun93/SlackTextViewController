@@ -112,7 +112,7 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
 }
 
 // Compensate for layout bug in iOS 11 Beta 2
-//https://github.com/Recfive/SlackTextViewController/commit/5faf3952fb1623508120c7f44291bfb0259f25af
+// https://github.com/Recfive/SlackTextViewController/commit/5faf3952fb1623508120c7f44291bfb0259f25af
 - (void)layoutSubviews
 {
     [super layoutSubviews];
