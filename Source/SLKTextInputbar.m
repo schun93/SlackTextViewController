@@ -112,14 +112,17 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
 }
 
 // Compensate for layout bug in iOS 11 Beta 2
-// https://github.com/Recfive/SlackTextViewController/commit/5faf3952fb1623508120c7f44291bfb0259f25af
+// https://github.com/slackhq/SlackTextViewController/issues/604
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    [self bringSubviewToFront:self.textView];
-    [self bringSubviewToFront:self.rightButton];
-    [self bringSubviewToFront:self.leftButton];
+    for (id view in self.subviews) {
+        if ([view isKindOfClass:(NSClassFromString(@"_UIToolbarContentView"))]) {
+            UIView *toolbarContentView = view;
+            toolbarContentView.userInteractionEnabled = NO;
+        }
+    }
 }
 
 - (CGSize)intrinsicContentSize
