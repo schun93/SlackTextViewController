@@ -38,6 +38,8 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
 
 @property (nonatomic, getter=isHidden) BOOL hidden; // Required override
 
+@property (nonatomic, assign) BOOL checkedForToolbarContentView;
+
 @end
 
 @implementation SLKTextInputbar
@@ -117,11 +119,14 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
 {
     [super layoutSubviews];
     
-    for (id view in self.subviews) {
-        if ([view isKindOfClass:(NSClassFromString(@"_UIToolbarContentView"))]) {
-            UIView *toolbarContentView = view;
-            toolbarContentView.userInteractionEnabled = NO;
+    if (!self.checkedForToolbarContentView) {
+        for (id view in self.subviews) {
+            if ([view isKindOfClass:(NSClassFromString(@"_UIToolbarContentView"))]) {
+                UIView *toolbarContentView = view;
+                toolbarContentView.userInteractionEnabled = NO;
+            }
         }
+        self.checkedForToolbarContentView = YES;
     }
 }
 
