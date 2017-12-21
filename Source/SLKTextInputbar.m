@@ -117,10 +117,12 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
 {
     [super layoutSubviews];
     
-    UIView *lastView = [self.subviews lastObject];
-    
-    if ([lastView isKindOfClass:(NSClassFromString(@"_UIToolbarContentView"))]) {
-        lastView.userInteractionEnabled = NO;
+    for (id view in [self.subviews reverseObjectEnumerator]) {
+        if ([view isKindOfClass:(NSClassFromString(@"_UIToolbarContentView"))]) {
+            UIView *toolbarContentView = view;
+            toolbarContentView.userInteractionEnabled = NO;
+            break;
+        }
     }
 }
 
