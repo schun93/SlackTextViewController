@@ -2098,6 +2098,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSAssert(NO, @"tableView:cellForRowAtIndexPath: needs to be implemented by subclass.");
     return nil;
 }
 
@@ -2111,6 +2112,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSAssert(NO, @"collectionView:cellForItemAtIndexPath: needs to be implemented by subclass.");
     return nil;
 }
 
@@ -2386,35 +2388,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
     _tableView.delegate = nil;
     _tableView.dataSource = nil;
-    _tableView = nil;
-    
-    _collectionView.delegate = nil;
-    _collectionView.dataSource = nil;
-    _collectionView = nil;
-    
-    _scrollView = nil;
-    
-    _autoCompletionView.delegate = nil;
-    _autoCompletionView.dataSource = nil;
-    _autoCompletionView = nil;
-    
-    _textInputbar = nil;
-    _textViewClass = nil;
-    
+
     [_typingIndicatorProxyView removeObserver:self forKeyPath:@"visible"];
-    _typingIndicatorProxyView = nil;
-    _typingIndicatorViewClass = nil;
-    
-    _registeredPrefixes = nil;
-    _singleTapGesture.delegate = nil;
-    _singleTapGesture = nil;
-    _verticalPanGesture.delegate = nil;
-    _verticalPanGesture = nil;
-    _scrollViewHC = nil;
-    _textInputbarHC = nil;
-    _typingIndicatorViewHC = nil;
-    _autoCompletionViewHC = nil;
-    _keyboardHC = nil;
 }
 
 @end
