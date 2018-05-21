@@ -157,6 +157,7 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
 /**
  Initializes either a table or collection view controller.
  You must override either +tableViewStyleForCoder: or +collectionViewLayoutForCoder: to define witch view to be layed out.
+
  
  @param decoder An unarchiver object.
  @return An initialized SLKTextViewController object or nil if the object could not be created.
@@ -173,13 +174,13 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
 + (UITableViewStyle)tableViewStyleForCoder:(NSCoder *)decoder;
 
 /**
- Returns the tableView style to be configured when using Interface Builder. Default is nil.
+ Returns the collectionView style to be configured when using Interface Builder. Default is nil.
  You must override this method if you want to configure a collectionView.
  
  @param decoder An unarchiver object.
- @return The collectionView style to be used in the new instantiated collectionView.
+ @return The collectionView style to be used in the new instantiated collectionView or nil. If nil returned tableViewStyleForCoder will be used to configure the table view.
  */
-+ (UICollectionViewLayout *)collectionViewLayoutForCoder:(NSCoder *)decoder;
++ (nullable UICollectionViewLayout *)collectionViewLayoutForCoder:(NSCoder *)decoder;
 
 
 #pragma mark - Keyboard Handling

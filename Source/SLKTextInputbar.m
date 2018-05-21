@@ -754,28 +754,6 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
     [self slk_unregisterFrom:self.layer forSelector:@selector(position)];
     [self slk_unregisterFrom:self.leftButton.imageView forSelector:@selector(image)];
     [self slk_unregisterFrom:self.rightButton.titleLabel forSelector:@selector(font)];
-    
-    _leftButton = nil;
-    _rightButton = nil;
-    
-    _inputAccessoryView = nil;
-    _textView.delegate = nil;
-    _textView = nil;
-    
-    _editorContentView = nil;
-    _editorTitle = nil;
-    _editorLeftButton = nil;
-    _editorRightButton = nil;
-    
-    _leftButtonWC = nil;
-    _leftButtonHC = nil;
-    _leftMarginWC = nil;
-    _bottomMarginWC = nil;
-    _rightButtonWC = nil;
-    _rightMarginWC = nil;
-    _rightButtonTopMarginC = nil;
-    _rightButtonBottomMarginC = nil;
-    _editorContentViewHC = nil;
 }
 
 @end
